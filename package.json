@@ -4,14 +4,43 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": {
+    "name": "FortHell",
+    "email": "example@example.example"
+  },
+  "license": "GPL-3.0",
+  "description": "A lightweight Electron app for YouTube Music.",
+  "homepage": "https://github.com/FortHell/MusicBox-YTMusic/",
   "devDependencies": {
     "electron": "^36.1.0",
-    "electron-packager": "^17.1.2"
+    "electron-builder": "^23.0.0"
+  },
+  "build": {
+    "appId": "com.forthell.musicbox",
+    "productName": "MusicBox",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "main.js"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "icon.png",
+      "maintainer": "FortHell <example@example.example>",
+      "category": "Audio"
+    }
   }
 }
