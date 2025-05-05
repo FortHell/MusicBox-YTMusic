@@ -6,8 +6,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1650,
     height: 900,
-    frame: true, // No window frame
-    fullscreen: false, // Fullscreen mode
+    frame: true,
+    fullscreen: false,
     webPreferences: {
       nodeIntegration: false,
       sandbox: false
