@@ -1,14 +1,11 @@
 # MusicBox-YTMusic
-A lightweight Electron app for YouTube Music.
+A lightweight Electron app for YouTube Music with QoL fixes.
 
-Available for Windows (x64) and Linux (deb/AppImage).
+Available for Windows (x64).
 
 I made this very simple Electron app for Youtube Music, as Google still hasn't bothered to make a proper PC app for their own music site.
 It's completely open-source, safe and malware-free. You can be assured that your Google logins are safe.
 
 You can even build the app yourself! (Please build node_modules yourself!)
 
-If you have any issues or thoughts, don't hesitate to let me know!
-
-
-(FYI: I didn't get the chance to test the Linux Releases, so if it has any issues, please let me know!)
+1.3.0: Changed YT Music's linear volume slider to a logarithmic slider instead. There may be minor audio glitches for a fraction of a second while changing volume.
