@@ -63,19 +63,39 @@ app.whenReady().then(() => {
 
   win.webContents.on('did-finish-load', () => {
     win.webContents.executeJavaScript(`
-      const slider = document.querySelector('tp-yt-paper-slider#volume-slider');
-      const video = document.querySelector('video');
-      if (slider && video) {
-        // initialize volume to current slider value
-        video.volume = Math.pow(slider.value / 100, 2);
+      (() => {
+        const interval = setInterval(() => {
+          const video = document.querySelector('video');
+          const slider = document.querySelector('tp-yt-paper-slider#volume-slider');
+          if (!video || !slider) return;
 
-        // listen for slider changes
-        slider.addEventListener('value-change', (e) => {
-          const linear = slider.value; // 0–100
-          const gain = Math.pow(linear / 100, 2); // quadratic/logarithmic feel
-          video.volume = gain;
-        });
-      }
+          clearInterval(interval);
+
+          const calc = () => Math.pow(slider.value / 100, 2);
+
+          const proto = HTMLMediaElement.prototype;
+          const desc = Object.getOwnPropertyDescriptor(proto, 'volume');
+          const nativeSet = desc.set;
+          const nativeGet = desc.get;
+
+          Object.defineProperty(proto, 'volume', {
+            set() {
+              // ignore whatever YT tries to set
+              nativeSet.call(this, calc());
+            },
+            get() {
+              return nativeGet.call(this);
+            }
+          });
+
+          // slider controls your curve normally
+          slider.addEventListener("value-change", () => {
+            nativeSet.call(video, calc());
+          });
+
+          nativeSet.call(video, calc());
+        }, 50);
+      })();
     `);
   });
 
