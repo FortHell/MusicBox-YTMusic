@@ -13,7 +13,7 @@ const { ipcMain } = require('electron');
 ipcMain.on('set-rpc-enabled', (event, value) => {
   rpcEnabled = value;
   if (!rpcEnabled) {
-    rpc.clearActivity(); // Clear Discord immediately when toggled off
+    rpc.clearActivity();
   }
 });
 
@@ -62,7 +62,6 @@ function createWindow() {
       if (input.code === 'BrowserBack' || input.code === 'Backspace') {
         win.webContents.executeJavaScript('window.history.back();');
       }
-      // optional: add volume slider tweaks in renderer later
     }
   });
 }
@@ -189,7 +188,7 @@ rpc.on('ready', () => {
       console.error("Failed to get song info:", err);
     }
 
-  }, 1000); // update every second
+  }, 1000);
 });
 });
 
