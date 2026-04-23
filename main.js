@@ -1,10 +1,21 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 // Discord RPC setup
 const RPC = require('discord-rpc');
 const clientId = '1369442515849183302';
 RPC.register(clientId);
 const rpc = new RPC.Client({ transport: 'ipc' });
+
+let rpcEnabled = true;
+
+const { ipcMain } = require('electron');
+ipcMain.on('set-rpc-enabled', (event, value) => {
+  rpcEnabled = value;
+  if (!rpcEnabled) {
+    rpc.clearActivity(); // Clear Discord immediately when toggled off
+  }
+});
 
 //-----------------------
 
@@ -17,6 +28,7 @@ function createWindow() {
     frame: true,
     fullscreen: false,
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
       contextIsolation: false,
       sandbox: false,
@@ -106,7 +118,7 @@ rpc.on('ready', () => {
   console.log("Discord RPC connected!");
 
   setInterval(async () => {
-    if (!win) return;
+    if (!win || !rpcEnabled) return;
 
     try {
       const result = await win.webContents.executeJavaScript(`

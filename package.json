@@ -8,10 +8,7 @@
     "build": "electron-builder"
   },
   "keywords": [],
-  "author": {
-    "name": "FortHell",
-    "email": "example@example.example"
-  },
+  "author": "FortHell <example@example.example>",
   "license": "MIT",
   "description": "A lightweight Electron app for YouTube Music with QoL fixes.",
   "homepage": "https://github.com/FortHell/MusicBox-YTMusic/",
@@ -45,5 +42,12 @@
   },
   "dependencies": {
     "discord-rpc": "^4.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FortHell/MusicBox-YTMusic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FortHell/MusicBox-YTMusic/issues"
   }
 }
