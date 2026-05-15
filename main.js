@@ -54,16 +54,6 @@ function createWindow() {
       setTimeout(() => win.destroy(), 150);
     });
   });
-
-  // keyboard shortcuts: back button + logarithmic volume
-  win.webContents.on('before-input-event', (event, input) => {
-    if (input.type === 'keyDown') {
-      // back button
-      if (input.code === 'BrowserBack' || input.code === 'Backspace') {
-        win.webContents.executeJavaScript('window.history.back();');
-      }
-    }
-  });
 }
 
 app.disableHardwareAcceleration();
