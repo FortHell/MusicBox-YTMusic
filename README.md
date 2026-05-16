@@ -2,7 +2,9 @@
 A lightweight Electron app for YouTube Music with quality-of-life enhancements.
 
 ## Download
-Download the latest version on [this](https://github.com/FortHell/MusicBox-YTMusic/releases) page.
+Download the latest version on [this](https://github.com/FortHell/MusicBox-YTMusic/releases/latest) page.
+
+Available for Windows and Linux.
 
 ## Features
 + **Native Feel:** A dedicated app for your music, just like how other streaming apps do it.
