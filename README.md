@@ -12,7 +12,7 @@ Available for Windows and Linux.
 + **QoL Fixes:** Logarithmic volume curve, easier on your ears, simpler to adjust.
 + **Cross-Platform:** Supports Windows and Linux.
 
-*Tested on Windows 10/11 64-bit and Linux Debian-based*
+*Tested on Windows 11 and Debian 13 (trixie)*
 
 ## Installation
 ### 1. Clone the repo
