@@ -1,6 +1,6 @@
 {
   "name": "musicbox",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,8 +13,8 @@
   "description": "A lightweight Electron app for YouTube Music with QoL fixes.",
   "homepage": "https://github.com/FortHell/MusicBox-YTMusic/",
   "devDependencies": {
-    "electron": "^42.1.0",
-    "electron-builder": "^26.0.12"
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
   },
   "build": {
     "appId": "com.forthell.musicbox",
@@ -34,7 +34,9 @@
     "linux": {
       "target": [
         "AppImage",
-        "deb"
+        "deb",
+        "rpm",
+        "flatpak"
       ],
       "icon": "icon.png",
       "maintainer": "FortHell <example@example.example>",
